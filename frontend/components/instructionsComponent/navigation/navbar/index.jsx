@@ -1,14 +1,12 @@
-
-'use client'
+"use client";
 
 import { ConnectKitButton } from "connectkit";
 import styles from "./Navbar.module.css";
+import Link from "next/link";
 export default function Navbar() {
   return (
     <nav className={styles.navbar}>
-      <a href="https://alchemy.com/?a=create-web3-dapp" target={"_blank"}>
-        create-web3-dapp
-      </a>
+      <Link href="/">SaveAKid</Link>
       <ConnectKitButton />
     </nav>
   );

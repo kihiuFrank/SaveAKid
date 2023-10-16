@@ -3,25 +3,22 @@ import styles from "./footer.module.css";
 export default function Footer() {
   return (
     <div className={styles.footer}>
-      <a href="https://alchemy.com/?a=create-web3-dapp" target={"_blank"}>
+      <div>
         <img
           id="badge-button"
           style={{ width: "240px", height: "53px" }}
-          src="https://static.alchemyapi.io/images/marketing/badgeLight.png"
+          src="https://maralliance.org/wp-content/uploads/2022/03/stripe-badge-transparent.png"
           alt="Alchemy Supercharged"
         />
-      </a>
+      </div>
       <div className={styles.icons_container}>
         <div>
-          <a
-            href="https://github.com/alchemyplatform/create-web3-dapp"
-            target={"_blank"}
-          >
+          <a href="https://github.com/kihiuFrank/SaveAKid" target={"_blank"}>
             Leave a star on Github
           </a>
         </div>
         <div>
-          <a href="https://twitter.com/AlchemyPlatform" target={"_blank"}>
+          <a href="https://twitter.com/frankline_kihiu" target={"_blank"}>
             Follow us on Twitter
           </a>
         </div>
