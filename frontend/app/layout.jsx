@@ -1,59 +1,31 @@
 "use client";
-import {
-  WagmiConfig,
-  createConfig,
-  configureChains,
-  mainnet,
-  sepolia,
-} from "wagmi";
-
-import { alchemyProvider } from "wagmi/providers/alchemy";
-import { publicProvider } from "wagmi/providers/public";
-
-import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
-import { InjectedConnector } from "wagmi/connectors/injected";
-import { MetaMaskConnector } from "wagmi/connectors/metaMask";
-import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
-
+import { WagmiConfig, createConfig, sepolia } from "wagmi";
 import { ConnectKitProvider, getDefaultConfig } from "connectkit";
-import Navbar from "../components/instructionsComponent/navigation/navbar";
-import Footer from "../components/instructionsComponent/navigation/footer";
+import Navbar from "/components/instructionsComponent/navigation/navbar";
+import Footer from "/components/instructionsComponent/navigation/footer";
+import { goerli } from "viem/chains";
 
-const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [sepolia],
-  [
-    alchemyProvider({ apiKey: `${process.env.ALCHEMY_API_KEY}` }),
-    publicProvider(),
-  ]
+const config = createConfig(
+  getDefaultConfig({
+    // Required API Keys
+    alchemyId: process.env.ALCHEMY_API_KEY, // or infuraId
+    walletConnectProjectId: process.env.WALLET_CONNECT_PROJECT_ID,
+
+    // Required
+    appName: "You Create Web3 Dapp",
+
+    // Optional
+    appDescription: "Your App Description",
+    appUrl: "https://family.co", // your app's url
+    appIcon: "https://family.co/logo.png", // your app's logo,no bigger than 1024x1024px (max. 1MB)
+
+    // ChainDoesNotSupportContract: Chain "Sepolia" does not support contract "ensUniversalResolver".
+    // This could be due to any of the following:
+    // - The chain does not have the contract "ensUniversalResolver" configured.
+    chains: [sepolia],
+    // chains: [goerli],
+  })
 );
-// Set up wagmi config
-const config = createConfig({
-  autoConnect: true,
-  connectors: [
-    new MetaMaskConnector({ chains }),
-    new CoinbaseWalletConnector({
-      chains,
-      options: {
-        appName: "wagmi",
-      },
-    }),
-    new WalletConnectConnector({
-      chains,
-      options: {
-        projectId: "...",
-      },
-    }),
-    new InjectedConnector({
-      chains,
-      options: {
-        name: "Injected",
-        shimDisconnect: true,
-      },
-    }),
-  ],
-  publicClient,
-  webSocketPublicClient,
-});
 
 export default function RootLayout({ children }) {
   return (
