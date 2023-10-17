@@ -8,6 +8,10 @@
   margin-bottom: 4rem;
 }
 
+.my-link {
+  font-size: 2rem;
+}
+
 .alchemy_logo {
   width: 6rem;
   cursor: pointer;

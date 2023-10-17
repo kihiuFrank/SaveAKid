@@ -6,7 +6,9 @@ import Link from "next/link";
 export default function Navbar() {
   return (
     <nav className={styles.navbar}>
-      <Link href="/">SaveAKid</Link>
+      <Link className={styles.my_link} href="/">
+        SaveAKid
+      </Link>
       <ConnectKitButton />
     </nav>
   );
