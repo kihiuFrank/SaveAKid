@@ -31,7 +31,7 @@ export default function InstructionsComponent() {
           </div>
         </Link>
 
-        <Link href={"/create-campaign"}>
+        <Link href={"/dashboard"}>
           <div className={styles.button}>
             {/* <img
               src="https://static.alchemyapi.io/images/cw3d/Icon%20Large/file-eye-01-l.svg"
@@ -42,10 +42,10 @@ export default function InstructionsComponent() {
           </div>
         </Link>
 
-        <Link href={"/donate"}>
+        <Link href={"/create-campaign"}>
           <div className={styles.button}>
             {/* <img src="https://static.alchemyapi.io/images/cw3d/Icon%20Medium/lightning-square-contained-m.svg" width={"20px"} height={"20px"} /> */}
-            <p>Donate</p>
+            <p>Create Campaign</p>
           </div>
         </Link>
       </div>
