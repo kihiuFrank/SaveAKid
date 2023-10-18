@@ -4,7 +4,7 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "hardhat": "^2.11.1"
+    "hardhat": "^2.18.1"
   },
   "devDependencies": {
     "@chainlink/contracts": "^0.4.1",
@@ -20,7 +20,7 @@
     "@typechain/hardhat": "^6.1.2",
     "chai": "^4.2.0",
     "dotenv": "^16.0.2",
-    "ethers": "^5.7.0",
+    "ethers": "^6.8.0",
     "hardhat-contract-sizer": "^2.10.0",
     "hardhat-deploy": "^0.11.14",
     "hardhat-gas-reporter": "^1.0.8",

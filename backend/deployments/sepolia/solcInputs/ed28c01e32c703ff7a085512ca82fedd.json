@@ -1,0 +1,35 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/SaveAKid.sol": {
+      "content": "// SPDX-License-Identifier: SEE LICENSE IN LICENSE\npragma solidity ^0.8.7;\n\ncontract SaveAKid {\n    struct Home {\n        address owner;\n        string homeName;\n        string description;\n        string location;\n        string image;\n        uint256 contactPerson;\n    }\n\n    mapping(uint256 => Home) public homes;\n    mapping(address => uint) balances;\n\n    address public manager;\n    uint256 public platformFee;\n    uint256 public numberOfHomes;\n\n    constructor(uint256 _platformFee) payable {\n        manager == msg.sender;\n        platformFee = _platformFee;\n        balances[msg.sender] = msg.value;\n    }\n\n    modifier onlyManager() {\n        require(msg.sender == manager, \"not owner\");\n        _;\n    }\n\n    function registerHome(\n        address _owner,\n        string memory _homeName,\n        string memory _description,\n        string memory _location,\n        string memory _image,\n        uint256 _contactPerson\n    ) public returns (uint256) {\n        Home storage home = homes[numberOfHomes];\n\n        home.owner = _owner;\n        home.homeName = _homeName;\n        home.description = _description;\n        home.location = _location;\n        home.image = _image;\n        home.contactPerson = _contactPerson;\n\n        numberOfHomes++;\n        return numberOfHomes - 1;\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": false,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}
