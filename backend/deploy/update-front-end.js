@@ -7,40 +7,58 @@ const {
   frontEndAbiLocation,
 } = require("../helper-hardhat-config");
 
+const contractAddress = "0x03A77DD8fc0588885eCcF09a0683b7395400d554";
+
 module.exports = async function () {
   if (process.env.UPDATE_FRONT_END) {
     console.log("Updating front end...");
     await updateContractAddresses();
     await updateAbi();
+    console.log("Front end written!");
   }
 };
 
 async function updateAbi() {
-  const saveAKid = await ethers.getContract("SaveAKid");
-  //   fs.writeFileSync(
-  //     `${frontEndAbiLocation}SaveAKid.json`,
-  //     saveAKid.interface.format(ethers.utils.FormatTypes.json)
-  //   );
+  const saveAKid = await ethers.getContractAt("SaveAKid", contractAddress);
+
   fs.writeFileSync(
-    frontEndAbiLocation,
+    "../frontend/constants/saveAKid.json",
     saveAKid.interface.format(ethers.utils.FormatTypes.json)
   );
+  //   fs.writeFileSync(
+  //     `${frontEndAbiLocation}`,
+  //     JSON.stringify(saveAKid.interface.format("json"))
+  //   );
 }
 
 async function updateContractAddresses() {
-  const saveAKid = await ethers.getContract("SaveAKid");
+  const saveAKid = await ethers.getContractAt("SaveAKid", contractAddress);
   const chainId = network.config.chainId.toString();
   const contractAddresses = JSON.parse(
-    fs.readFileSync(frontEndContractFile, "utf8")
+    fs.readFileSync(`${frontEndContractFile}`, "utf8")
   );
-  if (chainId in contractAddresses) {
-    if (!contractAddresses[chainId].includes(saveAKid.address)) {
-      contractAddresses[chainId].push(saveAKid.address);
+
+  if (contractAddresses[chainId]) {
+    // Check if it's already an array
+    if (Array.isArray(contractAddresses[chainId])) {
+      if (!contractAddresses[chainId].includes(saveAKid.address)) {
+        contractAddresses[chainId].push(saveAKid.address);
+      }
+    } else {
+      // Convert it to an array
+      contractAddresses[chainId] = [
+        contractAddresses[chainId],
+        saveAKid.address,
+      ];
     }
   } else {
-    contractAddresses[chainId] = { SaveAKid: [saveAKid.address] };
+    contractAddresses[chainId] = [saveAKid.address];
   }
-  fs.writeFileSync(frontEndContractFile, JSON.stringify(contractAddresses));
+
+  fs.writeFileSync(
+    "../frontend/constants/contractAddresses.json",
+    JSON.stringify(contractAddresses)
+  );
 }
 
 module.exports.tags = ["all", "frontend"];
