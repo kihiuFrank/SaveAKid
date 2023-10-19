@@ -141,4 +141,23 @@ contract SaveAKid {
             campaign.amountCollected = campaign.amountCollected + amount;
         }
     }
+
+    function getDonators(
+        uint256 _id
+    ) public view returns (address[] memory, uint256[] memory) {
+        return (campaigns[_id].donators, campaigns[_id].donations);
+    }
+
+    function getCampaigns() public view returns (Campaign[] memory) {
+        // create an empty array of as many structs as there are campaigns
+        Campaign[] memory allCampaigns = new Campaign[](numberOfCampaigns);
+
+        // now we loop through the campaigns and populate the variable
+        for (uint i = 0; i < numberOfCampaigns; i++) {
+            Campaign storage item = campaigns[i];
+            allCampaigns[i] = item;
+        }
+
+        return allCampaigns;
+    }
 }
