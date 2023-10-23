@@ -39,11 +39,13 @@ contract SaveAKid {
     );
 
     mapping(uint256 => Home) public homes;
+    mapping(uint256 => Campaign) public campaigns;
     mapping(address => uint) balances;
 
     address public manager;
     uint256 public platformFee;
     uint256 public numberOfHomes;
+    uint256 public numberOfCampaigns;
 
     constructor(uint256 _platformFee) payable {
         manager == msg.sender;

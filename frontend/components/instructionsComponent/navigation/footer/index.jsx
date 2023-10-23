@@ -8,7 +8,7 @@ export default function Footer() {
           id="badge-button"
           style={{ width: "240px", height: "53px" }}
           src="https://maralliance.org/wp-content/uploads/2022/03/stripe-badge-transparent.png"
-          alt="Alchemy Supercharged"
+          alt="footer IMG"
         />
       </div>
       <div className={styles.icons_container}>

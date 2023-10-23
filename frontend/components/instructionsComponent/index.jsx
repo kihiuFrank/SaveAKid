@@ -1,5 +1,6 @@
 import styles from "./instructionsComponent.module.css";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function InstructionsComponent() {
   return (
@@ -16,38 +17,31 @@ export default function InstructionsComponent() {
         </div>
       </header>
 
-      <div className={styles.buttons_container}>
-        <Link href={"/register"}>
-          <div className={styles.button}>
-            {/* <img src="https://static.alchemyapi.io/images/cw3d/Icon%20Medium/lightning-square-contained-m.svg" width={"20px"} height={"20px"} /> */}
-            <p>Register a Home</p>
-          </div>
-        </Link>
+      <div className={styles.landingPage_container}>
+        <div className={styles.image_container}>
+          <Image
+            priority={true}
+            placeholder="empty"
+            className={styles.img}
+            src="/saveAKid.png"
+            fill={true}
+            alt="Picture"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+        </div>
 
-        <Link href={"/homes"}>
-          <div className={styles.button}>
-            {/* <img src="https://static.alchemyapi.io/images/cw3d/Icon%20Medium/lightning-square-contained-m.svg" width={"20px"} height={"20px"} /> */}
-            <p>Explore Homes</p>
-          </div>
-        </Link>
-
-        <Link href={"/dashboard"}>
-          <div className={styles.button}>
-            {/* <img
-              src="https://static.alchemyapi.io/images/cw3d/Icon%20Large/file-eye-01-l.svg"
-              width={"20px"}
-              height={"20px"}
-            /> */}
-            <p>Show Current Campaigns</p>
-          </div>
-        </Link>
-
-        <Link href={"/create-campaign"}>
-          <div className={styles.button}>
-            {/* <img src="https://static.alchemyapi.io/images/cw3d/Icon%20Medium/lightning-square-contained-m.svg" width={"20px"} height={"20px"} /> */}
-            <p>Create Campaign</p>
-          </div>
-        </Link>
+        <p className={styles.paragraph}>
+          SaveAKid is a donations platform aiming to provide support for
+          children and young people each year in Kenya by creating a space where
+          charity organizations and children homes are connected with donors
+          from all over the world. This includes support for children and young
+          people at primary school, secondary school and for students attending
+          college, university or vocational courses. <br />
+          <br />
+          When you make a donation today, you're not only creating a brighter
+          world, you are also helping a child meet some of their greatest needs.
+          Support a child in need by making a donation today!
+        </p>
       </div>
     </div>
   );

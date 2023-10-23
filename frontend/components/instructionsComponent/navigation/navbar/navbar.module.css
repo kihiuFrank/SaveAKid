@@ -4,12 +4,16 @@
   align-items: center;
   width: 100%;
   padding: 2rem 4rem 0.8rem 4rem;
-  gap: 2rem;
-  margin-bottom: 4rem;
+  gap: 1rem;
+  margin-bottom: 10rem;
 }
 
-.my-link {
-  font-size: 2rem;
+.mainLink {
+  font-size: 1.8rem;
+}
+
+.my_link {
+  font-size: 1.2rem;
 }
 
 .alchemy_logo {

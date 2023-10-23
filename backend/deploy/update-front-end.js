@@ -7,7 +7,7 @@ const {
   frontEndAbiLocation,
 } = require("../helper-hardhat-config");
 
-const contractAddress = "0x03A77DD8fc0588885eCcF09a0683b7395400d554";
+const contractAddress = "0xDeC6b9c484f01B080AdFa2fCE29FF6DD65FE97b0";
 
 module.exports = async function () {
   if (process.env.UPDATE_FRONT_END) {
@@ -22,7 +22,7 @@ async function updateAbi() {
   const saveAKid = await ethers.getContractAt("SaveAKid", contractAddress);
 
   fs.writeFileSync(
-    "../frontend/constants/saveAKid.json",
+    "../frontend/src/constants/saveAKid.json",
     saveAKid.interface.format(ethers.utils.FormatTypes.json)
   );
   //   fs.writeFileSync(
@@ -56,7 +56,7 @@ async function updateContractAddresses() {
   }
 
   fs.writeFileSync(
-    "../frontend/constants/contractAddresses.json",
+    "../frontend/src/constants/contractAddresses.json",
     JSON.stringify(contractAddresses)
   );
 }

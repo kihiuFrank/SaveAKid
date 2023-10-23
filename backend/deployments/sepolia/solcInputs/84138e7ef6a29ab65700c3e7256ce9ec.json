@@ -1,0 +1,35 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/SaveAKid.sol": {
+      "content": "// SPDX-License-Identifier: SEE LICENSE IN LICENSE\npragma solidity ^0.8.7;\n\n// Errors\nerror InputsCantBeNull();\nerror DeadlineShouldBeInFuture();\nerror AmountDonatedMustBeGreaterThanZero(uint minAmount, uint donatedAmount);\nerror DeadlineReached(uint campaignDeadline, uint timeRequested);\n\ncontract SaveAKid {\n    struct Home {\n        address owner;\n        string homeName;\n        string description;\n        string location;\n        string image;\n        uint256 contactPerson;\n    }\n\n    struct Campaign {\n        address owner;\n        string name;\n        string category;\n        string title;\n        string description;\n        uint256 target;\n        uint256 deadline;\n        uint256 amountCollected;\n        string image;\n        address[] donators;\n        uint256[] donations;\n    }\n\n    event Action(\n        uint256 id,\n        string actionType,\n        address indexed executor,\n        uint256 timestamp\n    );\n\n    mapping(uint256 => Home) public homes;\n    mapping(uint256 => Campaign) public campaigns;\n    mapping(address => uint) balances;\n\n    address public manager;\n    uint256 public platformFee;\n    uint256 public numberOfHomes;\n    uint256 public numberOfCampaigns;\n\n    constructor(uint256 _platformFee) payable {\n        manager == msg.sender;\n        platformFee = _platformFee;\n        balances[msg.sender] = msg.value;\n    }\n\n    modifier onlyManager() {\n        require(msg.sender == manager, \"not owner\");\n        _;\n    }\n\n    function registerHome(\n        address _owner,\n        string memory _homeName,\n        string memory _description,\n        string memory _location,\n        string memory _image,\n        uint256 _contactPerson\n    ) public returns (uint256) {\n        Home storage home = homes[numberOfHomes];\n\n        home.owner = _owner;\n        home.homeName = _homeName;\n        home.description = _description;\n        home.location = _location;\n        home.image = _image;\n        home.contactPerson = _contactPerson;\n\n        numberOfHomes++;\n        return numberOfHomes - 1;\n    }\n\n    function createCampaign(\n        address _owner,\n        string memory _name,\n        string memory _title,\n        string memory _category,\n        string memory _description,\n        uint256 _target,\n        uint256 _deadline,\n        string memory _image\n    ) public returns (uint256) {\n        Campaign storage campaign = campaigns[numberOfCampaigns];\n\n        // check that the dealine is in the future\n        require(\n            campaign.deadline < block.timestamp,\n            \"deadline should be a date in the future\"\n        );\n\n        campaign.owner = _owner;\n        campaign.name = _name;\n        campaign.title = _title;\n        campaign.category = _category;\n        campaign.description = _description;\n        campaign.target = _target;\n        campaign.deadline = _deadline;\n        campaign.amountCollected = 0;\n        campaign.image = _image;\n\n        numberOfCampaigns++;\n\n        return numberOfCampaigns - 1;\n    }\n\n    function donateToCampaign(uint256 _id) public payable {\n        uint256 amount = msg.value;\n\n        Campaign storage campaign = campaigns[_id];\n\n        // amount donated shouldn't be zero or less\n        if (amount <= 0 wei) {\n            revert AmountDonatedMustBeGreaterThanZero({\n                minAmount: 1 wei,\n                donatedAmount: amount\n            });\n        }\n\n        // cannot donate after deadline\n        if (campaign.deadline < block.timestamp) {\n            revert DeadlineReached({\n                campaignDeadline: campaigns[_id].deadline,\n                timeRequested: block.timestamp\n            });\n        }\n\n        campaign.donators.push(msg.sender);\n        campaign.donations.push(amount);\n\n        (bool sent, ) = payable(manager).call{value: amount}(\"\");\n        require(sent, \"donation failed\");\n\n        if (sent) {\n            campaign.amountCollected = campaign.amountCollected + amount;\n        }\n    }\n\n    function getDonators(\n        uint256 _id\n    ) public view returns (address[] memory, uint256[] memory) {\n        return (campaigns[_id].donators, campaigns[_id].donations);\n    }\n\n    function getCampaigns() public view returns (Campaign[] memory) {\n        // create an empty array of as many structs as there are campaigns\n        Campaign[] memory allCampaigns = new Campaign[](numberOfCampaigns);\n\n        // now we loop through the campaigns and populate the variable\n        for (uint i = 0; i < numberOfCampaigns; i++) {\n            Campaign storage item = campaigns[i];\n            allCampaigns[i] = item;\n        }\n\n        return allCampaigns;\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": false,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}
