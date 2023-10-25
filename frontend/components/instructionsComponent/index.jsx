@@ -34,9 +34,10 @@ export default function InstructionsComponent() {
           SaveAKid is a donations platform aiming to provide support for
           children and young people each year in Kenya by creating a space where
           charity organizations and children homes are connected with donors
-          from all over the world. This includes support for children and young
-          people at primary school, secondary school and for students attending
-          college, university or vocational courses. <br />
+          from all over the world. <br /> <br />
+          This includes support for children and young people at primary school,
+          secondary school and for students attending college, university or
+          vocational courses. <br />
           <br />
           When you make a donation today, you're not only creating a brighter
           world, you are also helping a child meet some of their greatest needs.

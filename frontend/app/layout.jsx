@@ -30,6 +30,9 @@ const config = createConfig(
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
       <WagmiConfig config={config}>
         <ConnectKitProvider mode="dark">
           <body>
