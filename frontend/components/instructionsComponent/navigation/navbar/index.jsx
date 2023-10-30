@@ -12,7 +12,13 @@ export default function Navbar() {
           <Image width={60} height={60} src="/logo.png" alt="Logo" />
         </Link>
 
-        <Link href={"/dashboard"}>
+        <Link href={"/"}>
+          <div className={styles.my_link}>
+            <p>Home</p>
+          </div>
+        </Link>
+
+        <Link href={"/campaigns"}>
           <div className={styles.my_link}>
             <p>Campaigns</p>
           </div>

@@ -22,7 +22,7 @@ async function updateAbi() {
   const saveAKid = await ethers.getContractAt("SaveAKid", contractAddress);
 
   fs.writeFileSync(
-    "../frontend/src/constants/saveAKid.json",
+    "../frontend/constants/saveAKid.json",
     saveAKid.interface.format(ethers.utils.FormatTypes.json)
   );
   //   fs.writeFileSync(
@@ -56,7 +56,7 @@ async function updateContractAddresses() {
   }
 
   fs.writeFileSync(
-    "../frontend/src/constants/contractAddresses.json",
+    "../frontend/constants/contractAddresses.json",
     JSON.stringify(contractAddresses)
   );
 }

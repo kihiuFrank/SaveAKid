@@ -12,10 +12,10 @@ const config = createConfig(
     walletConnectProjectId: process.env.WALLET_CONNECT_PROJECT_ID,
 
     // Required
-    appName: "You Create Web3 Dapp",
+    appName: "SaveAKid",
 
     // Optional
-    appDescription: "Your App Description",
+    appDescription: "A donation platform for children.",
     appUrl: "https://family.co", // your app's url
     appIcon: "https://family.co/logo.png", // your app's logo,no bigger than 1024x1024px (max. 1MB)
 

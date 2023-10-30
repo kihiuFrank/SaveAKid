@@ -1,1 +1,182 @@
-[{"type":"constructor","stateMutability":"payable","payable":true,"inputs":[{"type":"uint256","name":"_platformFee"}]},{"type":"function","name":"homes","constant":true,"stateMutability":"view","payable":false,"gas":29000000,"inputs":[{"type":"uint256"}],"outputs":[{"type":"address","name":"owner"},{"type":"string","name":"homeName"},{"type":"string","name":"description"},{"type":"string","name":"location"},{"type":"string","name":"image"},{"type":"uint256","name":"contactPerson"}]},{"type":"function","name":"manager","constant":true,"stateMutability":"view","payable":false,"gas":29000000,"inputs":[],"outputs":[{"type":"address"}]},{"type":"function","name":"numberOfHomes","constant":true,"stateMutability":"view","payable":false,"gas":29000000,"inputs":[],"outputs":[{"type":"uint256"}]},{"type":"function","name":"platformFee","constant":true,"stateMutability":"view","payable":false,"gas":29000000,"inputs":[],"outputs":[{"type":"uint256"}]},{"type":"function","name":"registerHome","constant":false,"payable":false,"gas":29000000,"inputs":[{"type":"address","name":"_owner"},{"type":"string","name":"_homeName"},{"type":"string","name":"_description"},{"type":"string","name":"_location"},{"type":"string","name":"_image"},{"type":"uint256","name":"_contactPerson"}],"outputs":[{"type":"uint256"}]}]
+[
+  {
+    "type": "constructor",
+    "stateMutability": "payable",
+    "payable": true,
+    "inputs": [{ "type": "uint256", "name": "_platformFee" }]
+  },
+  {
+    "type": "error",
+    "name": "AmountDonatedMustBeGreaterThanZero",
+    "inputs": [
+      { "type": "uint256", "name": "minAmount" },
+      { "type": "uint256", "name": "donatedAmount" }
+    ]
+  },
+  {
+    "type": "error",
+    "name": "DeadlineReached",
+    "inputs": [
+      { "type": "uint256", "name": "campaignDeadline" },
+      { "type": "uint256", "name": "timeRequested" }
+    ]
+  },
+  {
+    "type": "event",
+    "anonymous": false,
+    "name": "Action",
+    "inputs": [
+      { "type": "uint256", "name": "id", "indexed": false },
+      { "type": "string", "name": "actionType", "indexed": false },
+      { "type": "address", "name": "executor", "indexed": true },
+      { "type": "uint256", "name": "timestamp", "indexed": false }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "campaigns",
+    "constant": true,
+    "stateMutability": "view",
+    "payable": false,
+    "inputs": [{ "type": "uint256" }],
+    "outputs": [
+      { "type": "address", "name": "owner" },
+      { "type": "string", "name": "name" },
+      { "type": "string", "name": "category" },
+      { "type": "string", "name": "title" },
+      { "type": "string", "name": "description" },
+      { "type": "uint256", "name": "target" },
+      { "type": "uint256", "name": "deadline" },
+      { "type": "uint256", "name": "amountCollected" },
+      { "type": "string", "name": "image" }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "createCampaign",
+    "constant": false,
+    "payable": false,
+    "inputs": [
+      { "type": "address", "name": "_owner" },
+      { "type": "string", "name": "_name" },
+      { "type": "string", "name": "_title" },
+      { "type": "string", "name": "_category" },
+      { "type": "string", "name": "_description" },
+      { "type": "uint256", "name": "_target" },
+      { "type": "uint256", "name": "_deadline" },
+      { "type": "string", "name": "_image" }
+    ],
+    "outputs": [{ "type": "uint256" }]
+  },
+  {
+    "type": "function",
+    "name": "donateToCampaign",
+    "constant": false,
+    "stateMutability": "payable",
+    "payable": true,
+    "inputs": [{ "type": "uint256", "name": "_id" }],
+    "outputs": []
+  },
+  {
+    "type": "function",
+    "name": "getCampaigns",
+    "constant": true,
+    "stateMutability": "view",
+    "payable": false,
+    "inputs": [],
+    "outputs": [
+      {
+        "type": "tuple[]",
+        "components": [
+          { "type": "address", "name": "owner" },
+          { "type": "string", "name": "name" },
+          { "type": "string", "name": "category" },
+          { "type": "string", "name": "title" },
+          { "type": "string", "name": "description" },
+          { "type": "uint256", "name": "target" },
+          { "type": "uint256", "name": "deadline" },
+          { "type": "uint256", "name": "amountCollected" },
+          { "type": "string", "name": "image" },
+          { "type": "address[]", "name": "donators" },
+          { "type": "uint256[]", "name": "donations" }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "getDonators",
+    "constant": true,
+    "stateMutability": "view",
+    "payable": false,
+    "inputs": [{ "type": "uint256", "name": "_id" }],
+    "outputs": [{ "type": "address[]" }, { "type": "uint256[]" }]
+  },
+  {
+    "type": "function",
+    "name": "homes",
+    "constant": true,
+    "stateMutability": "view",
+    "payable": false,
+    "inputs": [{ "type": "uint256" }],
+    "outputs": [
+      { "type": "address", "name": "owner" },
+      { "type": "string", "name": "homeName" },
+      { "type": "string", "name": "description" },
+      { "type": "string", "name": "location" },
+      { "type": "string", "name": "image" },
+      { "type": "uint256", "name": "contactPerson" }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "manager",
+    "constant": true,
+    "stateMutability": "view",
+    "payable": false,
+    "inputs": [],
+    "outputs": [{ "type": "address" }]
+  },
+  {
+    "type": "function",
+    "name": "numberOfCampaigns",
+    "constant": true,
+    "stateMutability": "view",
+    "payable": false,
+    "inputs": [],
+    "outputs": [{ "type": "uint256" }]
+  },
+  {
+    "type": "function",
+    "name": "numberOfHomes",
+    "constant": true,
+    "stateMutability": "view",
+    "payable": false,
+    "inputs": [],
+    "outputs": [{ "type": "uint256" }]
+  },
+  {
+    "type": "function",
+    "name": "platformFee",
+    "constant": true,
+    "stateMutability": "view",
+    "payable": false,
+    "inputs": [],
+    "outputs": [{ "type": "uint256" }]
+  },
+  {
+    "type": "function",
+    "name": "registerHome",
+    "constant": false,
+    "payable": false,
+    "inputs": [
+      { "type": "address", "name": "_owner" },
+      { "type": "string", "name": "_homeName" },
+      { "type": "string", "name": "_description" },
+      { "type": "string", "name": "_location" },
+      { "type": "string", "name": "_image" },
+      { "type": "uint256", "name": "_contactPerson" }
+    ],
+    "outputs": [{ "type": "uint256" }]
+  }
+]

@@ -21,8 +21,8 @@ const networkConfig = {
 
 const developmentChains = ["hardhat", "localhost"];
 const VERIFICATION_BLOCK_CONFIRMATIONS = 6;
-const frontEndContractFile = "../frontend/src/constants/contractAddresses.json";
-const frontEndAbiFile = "../frontend/src/constants/saveAKid.json";
+const frontEndContractFile = "../frontend/constants/contractAddresses.json";
+const frontEndAbiFile = "../frontend/constants/saveAKid.json";
 
 module.exports = {
   networkConfig,

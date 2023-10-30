@@ -1,42 +1,55 @@
+"use client";
 import React, { useContext, createContext } from "react";
-import abi from "../constants/SaveAKid.json";
+import contractAbi from "../constants/SaveAKid.json";
 import contractAddresses from "../constants/contractAddresses.json";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+// import {
+//   useAddress,
+//   useContract,
+//   useMetamask,
+//   useContractWrite,
+//   ChainId,
+// } from "@thirdweb-dev/react";
 import {
-  useAddress,
-  useContract,
-  useMetamask,
+  usePrepareContractWrite,
   useContractWrite,
-  ChainId,
-} from "@thirdweb-dev/react";
-import { ethers } from "ethers";
-import { EditionMetadataWithOwnerOutputSchema } from "@thirdweb-dev/sdk";
+  useContractRead,
+  useContract,
+  useAccount,
+} from "wagmi";
+import { utils } from "ethers";
+//import { ethers } from "ethers";
 
 const StateContext = createContext();
 const saveAKidAddr = contractAddresses["11155111"][0];
 
 export const StateContextProvider = ({ children }) => {
-  const { contract, isLoading, error } = useContract(saveAKidAddr, abi);
+  const contract = useContract({
+    addressOrName: saveAKidAddr,
+    contractInterface: contractAbi,
+  });
+
   const { mutateAsync: createCampaign } = useContractWrite(
     contract,
     "createCampaign"
   );
 
-  const address = useAddress();
-  const connect = useMetamask();
+  const { address } = useAccount(); // smart wallet address
 
   const publishCampaign = async (form) => {
     try {
-      // console.log("contract",contractAddress); // https://images.adsttc.com/media/images/623c/4fa0/3e4b/3145/3000/001b/large_jpg/_d_ambrosio_07._copy.jpg?1648119692
       const data = await createCampaign({
         args: [
-          address, // owner
+          // items have to be in the order they were the contract inside createCampaign()
+          address, // owner of the campaign
+          form.name, // name
           form.title, // title
+          form.category, // campaign category
           form.description, // description
           form.target,
-          new Date(form.deadline).getTime(), // deadline,
+          new Date(form.deadline).getTime(),
           form.image,
         ],
       });
@@ -81,6 +94,13 @@ export const StateContextProvider = ({ children }) => {
   };
 
   const getCampaigns = async () => {
+    // Read values from the smart contract
+    const { data: readData, isLoading: readLoading } = useContractRead({
+      address: saveAKidAddr,
+      abi: contractAbi,
+      functionName: "getCampaigns",
+    });
+
     const campaigns = await contract.call("getCampaigns");
 
     const parsedCampaigns = campaigns.map((campaign, i) => ({
