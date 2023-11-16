@@ -1,8 +1,9 @@
-import styles from "./instructionsComponent.module.css";
+"use client";
+import styles from "./landing.module.css";
 import Link from "next/link";
 import Image from "next/image";
 
-export default function InstructionsComponent() {
+export default function Landing() {
   return (
     <div className={styles.container}>
       <header className={styles.header_container}>

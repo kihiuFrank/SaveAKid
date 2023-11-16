@@ -1,12 +1,12 @@
-'use client'
-import InstructionsComponent from "../components/instructionsComponent";
+"use client";
 import styles from "./page.module.css";
 import "./globals.css";
+import Landing from "./landing/page";
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      <InstructionsComponent></InstructionsComponent>
+      <Landing />
     </main>
   );
 }

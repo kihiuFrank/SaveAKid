@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 
-import styles from "./campaigns.module.css";
+import styles from "./dashboard.module.css";
 
 import DisplayCampaigns from "../../components/DisplayCampaigns";
 
@@ -18,7 +18,7 @@ import {
 } from "wagmi";
 import { getContract, readContract } from "@wagmi/core";
 
-const page = () => {
+const Dashboard = () => {
   const saveAKidAddr = contractAddresses["11155111"][0];
 
   const contract = getContract({
@@ -86,4 +86,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Dashboard;

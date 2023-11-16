@@ -1,5 +1,5 @@
-const page = () => {
+const Campaign = () => {
   return <div>page</div>;
 };
 
-export default page;
+export default Campaign;
