@@ -76,7 +76,7 @@ const Dashboard = () => {
   }, [address, contract]);
 
   return (
-    <div className={styles.main}>
+    <div className={styles.container}>
       <DisplayCampaigns
         title="All Campaigns"
         isLoading={isLoading}
