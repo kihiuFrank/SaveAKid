@@ -1,9 +1,8 @@
 import ComingSoon from "../../components/utils/comingSoon/comingsoon";
-import styles from "./campaign.module.css";
 
 const Campaign = () => {
   return (
-    <div className={styles.container}>
+    <div className="flex items-center justify-center flex-col  h-full my-12 mx-auto max-w-7xl pt-20 sm:pb-24 px-6">
       <ComingSoon />
     </div>
   );

@@ -1,17 +1,15 @@
-import styles from "./footer.module.css";
-
 export default function Footer() {
   return (
-    <div className={styles.footer}>
+    <div className="flex justify-between items-center w-full flex-col gap-1 bg-cornflowerblue text-white">
       <div>
         <img
           id="badge-button"
-          style={{ width: "240px", height: "53px" }}
-          src="https://maralliance.org/wp-content/uploads/2022/03/stripe-badge-transparent.png"
+          className="w-32 h-32 "
+          src="/charity.png"
           alt="footer IMG"
         />
       </div>
-      <div className={styles.icons_container}>
+      <div className="flex gap-2 mb-1">
         <div>
           <a href="https://github.com/kihiuFrank/SaveAKid" target={"_blank"}>
             Leave a star on Github

@@ -35,14 +35,13 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="flex justify-between items-center w-full h-20 px-4 bg-white border-gray-200 dark:bg-gray-900  fixed nav">
-      <div>
+    <div className="flex-no-wrap flex w-full items-center justify-between bg-[#FBFBFB] py-2 shadow-md shadow-black/5 dark:bg-neutral-600 dark:shadow-black/10 lg:flex-wrap  lg:py-4  fixed nav">
+      <div className="px-4">
         {/* <h1 className="text-5xl font-signature ml-2"><a className="link-underline hover:transition ease-in-out delay-150 hover:underline hover:decoration-solid" href="">Logo</a></h1> */}
         <h1 className="text-3xl font-signature ml-2">
           <a
-            className="link-underline link-underline-black text-Blueviolet"
-            href=""
-            target="_blank"
+            className="link-underline link-underline-black text-cornflowerblue"
+            href="/"
             rel="noreferrer"
           >
             SaveAKid
@@ -61,7 +60,7 @@ const Navbar = () => {
         ))}
       </ul>
 
-      <div className="hidden md:flex">
+      <div className="hidden md:flex px-4">
         <ConnectKitButton />
       </div>
 
@@ -73,11 +72,11 @@ const Navbar = () => {
       </div>
 
       {nav && (
-        <ul className="flex flex-col justify-center items-center absolute top-0 right-0 w-80 h-120  bg-white border-gray-200 ">
+        <ul className="flex flex-col justify-center items-center absolute top-0 right-0 w-80 h-120  bg-[rgba(255,255,255,0.9)] border-gray-200 rounded-lg ">
           {links.map(({ id, link, name }) => (
             <li
               key={id}
-              className="px-4 cursor-pointer capitalize py-5 text-2xl"
+              className="px-3 cursor-pointer capitalize py-4 text-2xl"
             >
               <Link onClick={() => setNav(!nav)} href={link}>
                 {name}
@@ -85,7 +84,7 @@ const Navbar = () => {
             </li>
           ))}
 
-          <div>
+          <div className=" px-8 ">
             <ConnectKitButton />
           </div>
         </ul>

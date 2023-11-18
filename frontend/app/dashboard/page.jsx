@@ -1,14 +1,11 @@
 "use client";
 import React, { useState, useEffect } from "react";
 
-import styles from "./dashboard.module.css";
-
 import DisplayCampaigns from "../../components/DisplayCampaigns";
 
 import contractAbi from "../../constants/SaveAKid.json";
 import contractAddresses from "../../constants/contractAddresses.json";
 import { formatEther } from "viem";
-import { ethers } from "ethers";
 
 import {
   usePrepareContractWrite,
@@ -76,7 +73,7 @@ const Dashboard = () => {
   }, [address, contract]);
 
   return (
-    <div className={styles.container}>
+    <div className="flex items-center justify-center flex-col  h-full my-12 mx-auto max-w-7xl pt-20 sm:pb-24 px-6">
       <DisplayCampaigns
         title="All Campaigns"
         isLoading={isLoading}

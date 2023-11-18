@@ -15,8 +15,8 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
   };
 
   return (
-    <div>
-      <h1 className="font-epilogue font-semibold text-[18px] text-white text-left">
+    <div className="">
+      <h1 className=" font-semibold text-[18px] text-white text-left">
         {title} ({campaigns.length})
       </h1>
 
