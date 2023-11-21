@@ -1,9 +1,10 @@
-import { ThemeProvider } from "next-themes";
-import "../css/tailwind.css";
+"use client";
 import { WagmiConfig, createConfig, sepolia } from "wagmi";
 import { ConnectKitProvider, getDefaultConfig } from "connectkit";
-import Footer from "../components/footer";
+import { goerli } from "viem/chains";
 import Navbar from "../components/navbar";
+import Footer from "../components/footer";
+import "./global.css";
 
 const config = createConfig(
   getDefaultConfig({
@@ -12,10 +13,10 @@ const config = createConfig(
     walletConnectProjectId: process.env.WALLET_CONNECT_PROJECT_ID,
 
     // Required
-    appName: "SaveAKid",
+    appName: "You Create Web3 Dapp",
 
     // Optional
-    appDescription: "A donation platform for children.",
+    appDescription: "Your App Description",
     appUrl: "https://family.co", // your app's url
     appIcon: "https://family.co/logo.png", // your app's logo,no bigger than 1024x1024px (max. 1MB)
 
@@ -27,18 +28,26 @@ const config = createConfig(
   })
 );
 
-function MyApp({ Component, pageProps }) {
+export default function RootLayout({ children }) {
   return (
-    <WagmiConfig config={config}>
-      <ConnectKitProvider mode="dark">
-        <ThemeProvider attribute="class">
-          <Navbar />
-          <Component {...pageProps} />
-          <Footer />
-        </ThemeProvider>
-      </ConnectKitProvider>
-    </WagmiConfig>
+    <html lang="en">
+      <WagmiConfig config={config}>
+        <ConnectKitProvider mode="dark">
+          <body>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                minHeight: "105vh",
+              }}
+            >
+              <Navbar />
+              <div style={{ flexGrow: 1 }}>{children}</div>
+              <Footer />
+            </div>
+          </body>
+        </ConnectKitProvider>
+      </WagmiConfig>
+    </html>
   );
 }
-
-export default MyApp;
