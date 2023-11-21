@@ -2,6 +2,8 @@ import { ThemeProvider } from "next-themes";
 import "../css/tailwind.css";
 import { WagmiConfig, createConfig, sepolia } from "wagmi";
 import { ConnectKitProvider, getDefaultConfig } from "connectkit";
+import Footer from "../components/footer";
+import Navbar from "../components/navbar";
 
 const config = createConfig(
   getDefaultConfig({
@@ -30,7 +32,9 @@ function MyApp({ Component, pageProps }) {
     <WagmiConfig config={config}>
       <ConnectKitProvider mode="dark">
         <ThemeProvider attribute="class">
+          <Navbar />
           <Component {...pageProps} />
+          <Footer />
         </ThemeProvider>
       </ConnectKitProvider>
     </WagmiConfig>

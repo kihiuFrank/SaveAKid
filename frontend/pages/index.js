@@ -28,7 +28,6 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navbar />
       <Hero />
       <SectionTitle
         pretitle="SaveAKid Benefits"
@@ -66,7 +65,6 @@ const Home = () => {
       </SectionTitle>
       <Faq />
       <Cta />
-      <Footer />
       <PopupWidget />
     </>
   );
