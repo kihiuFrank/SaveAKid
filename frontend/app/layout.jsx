@@ -4,7 +4,8 @@ import { ConnectKitProvider, getDefaultConfig } from "connectkit";
 import { goerli } from "viem/chains";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
-import "./global.css";
+import "tailwindcss/tailwind.css";
+import Provider from "../components/ThemeProvider";
 
 const config = createConfig(
   getDefaultConfig({
@@ -28,23 +29,22 @@ const config = createConfig(
   })
 );
 
+// export const metadata = {
+//   title: "SaveAKid",
+//   description: "A donations platform",
+// };
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <WagmiConfig config={config}>
         <ConnectKitProvider mode="dark">
           <body>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                minHeight: "105vh",
-              }}
-            >
+            <Provider>
               <Navbar />
-              <div style={{ flexGrow: 1 }}>{children}</div>
+              <main> {children}</main>
               <Footer />
-            </div>
+            </Provider>
           </body>
         </ConnectKitProvider>
       </WagmiConfig>
