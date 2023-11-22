@@ -6,43 +6,52 @@ import userOneImg from "../public/img/user1.jpg";
 import userTwoImg from "../public/img/user2.jpg";
 import userThreeImg from "../public/img/user3.jpg";
 
-const Testimonials  = () => {
+const Testimonials = () => {
   return (
     <Container>
       <div className="grid gap-10 lg:grid-cols-2 xl:grid-cols-3">
         <div className="lg:col-span-2 xl:col-auto">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <p className="text-2xl leading-normal ">
-              Share a real <Mark>testimonial</Mark>
-              that hits some of your benefits from one of your popular customer.
+              Today we got to visit the drop in facility for street kids in one
+              part of Nairobi run by SaveAKid.<Mark> What a privilege.</Mark>{" "}
+              With our schools, I enjoy thinking of how we work with kids there.
+              What I could see was how we build self-confidence and integrity in
+              the kids, which is a main goal of Child Africa.
             </p>
 
             <Avatar
               image={userOneImg}
               name="Sarah Steiner"
-              title="VP Sales at Google"
+              title="VP Beast philanthropy "
             />
           </div>
         </div>
         <div className="">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <p className="text-2xl leading-normal ">
-              Make sure you only pick the <Mark>right sentence</Mark>
-              to keep it short and simple.
+              "My family has been having an annual party for the past four years
+              to raise money to help the kids. I like how they assign the money
+              that we help raise to a project and they send us updates with
+              pictures <Mark>so you know where your money is going to</Mark>.
+              They are making a difference and we will continue to support
+              them."
             </p>
 
             <Avatar
               image={userTwoImg}
               name="Dylan Ambrose"
-              title="Lead marketer at Netflix"
+              title="Lead marketer"
             />
           </div>
         </div>
         <div className="">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <p className="text-2xl leading-normal ">
-              This is an <Mark>awesome</Mark> landing page template I&apos;ve seen. I
-              would use this for anything.
+              It is really powerful to see the <Mark>huge difference</Mark> it
+              is possible to make with relatively small amounts of money. I am
+              impressed with the work SaveAKid does and the ability to make
+              something out of nothing.
             </p>
 
             <Avatar
@@ -55,7 +64,7 @@ const Testimonials  = () => {
       </div>
     </Container>
   );
-}
+};
 
 function Avatar(props) {
   return (
