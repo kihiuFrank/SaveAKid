@@ -35,10 +35,10 @@ const Navbar = () => {
 
   return (
     <div className=" relative w-full ">
-      <nav className=" fixed  z-40 flex flex-wrap items-center justify-between p-4  mx-auto lg:justify-between xl:px-0 shadow-lg shadow-black/5 d dark:shadow-black/10 bg-white dark:bg-gray-800  w-full top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+      <nav className=" fixed  z-50 flex flex-wrap items-center justify-between p-4  mx-auto lg:justify-between xl:px-0 shadow-lg shadow-black/5 d dark:shadow-black/10 bg-white dark:bg-gray-800  w-full top-0 start-0 border-b border-gray-200 dark:border-gray-600">
         {/* Logo  */}
         <Disclosure>
-          {({ open }) => (
+          {({ open, close }) => (
             <>
               <div className="flex flex-wrap items-center justify-between w-full lg:w-auto">
                 <Link href="/">
@@ -88,6 +88,9 @@ const Navbar = () => {
                         key={id}
                         href={link}
                         className="w-full px-4 py-2 -ml-4 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 dark:focus:bg-gray-800 focus:outline-none"
+                        onClick={() => {
+                          close();
+                        }}
                       >
                         {name}
                       </Link>

@@ -14,6 +14,8 @@ import {
   useAccount,
 } from "wagmi";
 import { getContract, readContract } from "@wagmi/core";
+import PageContainer from "../../components/containers/PageContainer";
+import Container from "../../components/containers/Container";
 
 const Dashboard = () => {
   const saveAKidAddr = contractAddresses["11155111"][0];
@@ -73,13 +75,13 @@ const Dashboard = () => {
   }, [address, contract]);
 
   return (
-    <div className="flex items-center justify-center flex-col  h-full my-12 mx-auto max-w-7xl pt-20 sm:pb-24 px-6">
+    <>
       <DisplayCampaigns
         title="All Campaigns"
         isLoading={isLoading}
         campaigns={campaigns}
       />{" "}
-    </div>
+    </>
   );
 };
 

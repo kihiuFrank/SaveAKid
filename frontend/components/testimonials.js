@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import Container from "./container";
+import Container from "./containers/Container";
 
 import userOneImg from "../public/img/user1.jpg";
 import userTwoImg from "../public/img/user2.jpg";

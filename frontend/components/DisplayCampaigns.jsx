@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 import { v4 as uuidv4 } from "uuid";
 import FundCard from "./FundCard";
 import Image from "next/image";
+import Container from "./containers/Container";
+import PageContainer from "./containers/PageContainer";
 
 const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
   const router = useRouter();
@@ -15,11 +17,10 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
   };
 
   return (
-    <div className="">
-      <h1 className=" font-semibold text-[18px] text-white text-left">
+    <PageContainer className="flex flex-wrap items-center justify-between flex-col">
+      <h1 className="text-2xl font-bold leading-snug tracking-tight text-gray-800 lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-white">
         {title} ({campaigns.length})
       </h1>
-
       <div className="flex flex-wrap mt-[20px] gap-[26px]">
         {isLoading && (
           <Image
@@ -48,7 +49,7 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
             />
           ))}
       </div>
-    </div>
+    </PageContainer>
   );
 };
 

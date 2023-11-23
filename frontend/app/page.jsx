@@ -13,6 +13,7 @@ import Testimonials from "../components/testimonials";
 import Cta from "../components/subscribe";
 import Faq from "../components/faq";
 import PopupWidget from "../components/popupWidget";
+import PageContainer from "../components/containers/PageContainer";
 
 const Home = () => {
   return (

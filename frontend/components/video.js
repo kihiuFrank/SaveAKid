@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Container from "./container";
+import Container from "./containers/Container";
 
 const Video = () => {
   const [playVideo, setPlayVideo] = useState(false);

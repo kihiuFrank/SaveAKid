@@ -1,5 +1,5 @@
 import React from "react";
-import Container from "./container";
+import Container from "./containers/Container";
 import { Disclosure } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/24/solid";
 
@@ -31,7 +31,7 @@ const Faq = () => {
       </div>
     </Container>
   );
-}
+};
 
 const faqdata = [
   {
