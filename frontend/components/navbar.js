@@ -95,13 +95,23 @@ const Navbar = () => {
                         {name}
                       </Link>
                     ))}
-
-                    <div className="w-full px-6 py-2 mt-3 text-center text-white  rounded-md lg:ml-5">
-                      <ConnectKitButton />
-                    </div>
-
-                    <ThemeChanger />
                   </>
+                  <div
+                    className="w-full px-6 py-2 mt-3 text-center text-white  rounded-md lg:ml-5"
+                    onClick={() => {
+                      close();
+                    }}
+                  >
+                    <ConnectKitButton />
+                  </div>
+
+                  <div
+                    onClick={() => {
+                      close();
+                    }}
+                  >
+                    <ThemeChanger />
+                  </div>
                 </Disclosure.Panel>
               </div>
             </>
