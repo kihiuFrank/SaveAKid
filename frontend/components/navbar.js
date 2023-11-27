@@ -35,7 +35,7 @@ const Navbar = () => {
 
   return (
     <div className=" relative w-full ">
-      <nav className=" fixed  z-50 flex flex-wrap items-center justify-between p-4  mx-auto lg:justify-between xl:px-0 shadow-lg shadow-black/5 d dark:shadow-black/10 bg-white dark:bg-gray-800  w-full top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+      <nav className=" fixed  z-50 flex flex-wrap items-center justify-between p-4  mx-auto lg:justify-between xl:px-0 shadow-lg shadow-black/5 d dark:shadow-black/10 bg-white dark:bg-[#1c1c24]  w-full top-0 start-0 border-b border-gray-200 dark:border-gray-600">
         {/* Logo  */}
         <Disclosure>
           {({ open, close }) => (

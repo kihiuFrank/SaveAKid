@@ -13,7 +13,7 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
   console.log(`These are the campaigns: ${campaigns}`);
 
   const handleNavigate = (campaign) => {
-    router.push(`/`);
+    router.push(`/campaign-details/${campaign.title}`, { state: campaign });
   };
 
   return (

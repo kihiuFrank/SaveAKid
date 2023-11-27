@@ -14,11 +14,13 @@ import "react-toastify/dist/ReactToastify.css";
 // } from "@thirdweb-dev/react";
 import {
   usePrepareContractWrite,
+  useWaitForTransaction,
   useContractWrite,
   useContractRead,
   useContract,
   useAccount,
 } from "wagmi";
+import { getContract } from "@wagmi/core";
 import { utils } from "ethers";
 //import { ethers } from "ethers";
 
@@ -26,21 +28,27 @@ const StateContext = createContext();
 const saveAKidAddr = contractAddresses["11155111"][0];
 
 export const StateContextProvider = ({ children }) => {
-  const contract = useContract({
-    addressOrName: saveAKidAddr,
-    contractInterface: contractAbi,
+  const contract = getContract({
+    address: saveAKidAddr,
+    abi: contractAbi,
   });
-
-  const { mutateAsync: createCampaign } = useContractWrite(
-    contract,
-    "createCampaign"
-  );
 
   const { address } = useAccount(); // smart wallet address
 
-  const publishCampaign = async (form) => {
+  const createCampaign = async (form) => {
+    const { config } = usePrepareContractWrite({
+      address: saveAKidAddr,
+      abi: contractAbi,
+      functionName: "createCampaign",
+    });
+
+    const { data, write } = useContractWrite(config);
+
+    const { isSuccess } = useWaitForTransaction({
+      hash: data?.hash,
+    });
     try {
-      const data = await createCampaign({
+      write({
         args: [
           // items have to be in the order they were the contract inside createCampaign()
           address, // owner of the campaign
@@ -54,7 +62,10 @@ export const StateContextProvider = ({ children }) => {
         ],
       });
 
-      toast.success("Campaign created successfully.");
+      isSuccess &&
+        toast.success(
+          `Campaign created successfully. https://etherscan.io/tx/${data?.hash}`
+        );
       console.log("contract call success", data);
     } catch (error) {
       toast.error("Error while creating Campaign, please try again");
@@ -175,8 +186,7 @@ export const StateContextProvider = ({ children }) => {
       value={{
         address,
         contract,
-        connect,
-        createCampaign: publishCampaign,
+        createCampaign,
         getCampaigns,
         getUserCampaigns,
         donate,

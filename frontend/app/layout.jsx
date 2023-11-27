@@ -6,6 +6,8 @@ import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import "tailwindcss/tailwind.css";
 import Provider from "../components/ThemeProvider";
+import { StateContextProvider } from "../context";
+import App from "next/app";
 
 const config = createConfig(
   getDefaultConfig({
@@ -32,22 +34,25 @@ const config = createConfig(
 // export const metadata = {
 //   title: "SaveAKid",
 //   description: "A donations platform",
+//   viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
 // };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <WagmiConfig config={config}>
-        <ConnectKitProvider mode="dark">
-          <body>
-            <Provider>
-              <Navbar />
-              <main> {children}</main>
-              <Footer />
-            </Provider>
-          </body>
-        </ConnectKitProvider>
-      </WagmiConfig>
+      <body>
+        <WagmiConfig config={config}>
+          <StateContextProvider>
+            <ConnectKitProvider mode="dark">
+              <Provider>
+                <Navbar />
+                <main> {children}</main>
+                <Footer />
+              </Provider>
+            </ConnectKitProvider>
+          </StateContextProvider>
+        </WagmiConfig>
+      </body>
     </html>
   );
 }

@@ -45,33 +45,33 @@ const Dashboard = () => {
     setIsLoading(false);
   };
 
-  const getCampaigns = async () => {
-    // Read values from the smart contract
-    // const { data: readData, isLoading: readLoading } = useContractRead({
-    //   address: saveAKidAddr,
-    //   abi: contractAbi,
-    //   functionName: "getCampaigns",
-    // });
+  // const getCampaigns = async () => {
+  //   // Read values from the smart contract
+  //   // const { data: readData, isLoading: readLoading } = useContractRead({
+  //   //   address: saveAKidAddr,
+  //   //   abi: contractAbi,
+  //   //   functionName: "getCampaigns",
+  //   // });
 
-    const campaigns = await contract.read.getCampaigns();
+  //   const campaigns = await contract.read.getCampaigns();
 
-    const parsedCampaigns = campaigns.map((campaign, i) => ({
-      owner: campaign.owner,
-      title: campaign.title,
-      description: campaign.description,
-      target: formatEther(campaign.target.toString()),
-      deadline: campaign.deadline,
-      amountCollected: formatEther(campaign.amountCollected.toString()),
-      image: campaign.image,
-      pId: i,
-    }));
+  //   const parsedCampaigns = campaigns.map((campaign, i) => ({
+  //     owner: campaign.owner,
+  //     title: campaign.title,
+  //     description: campaign.description,
+  //     target: formatEther(campaign.target.toString()),
+  //     deadline: campaign.deadline,
+  //     amountCollected: formatEther(campaign.amountCollected.toString()),
+  //     image: campaign.image,
+  //     pId: i,
+  //   }));
 
-    console.log(`The contract data is: ${campaigns}`);
-    return parsedCampaigns;
-  };
+  //   console.log(`The contract data is: ${parsedCampaigns.owner}`);
+  //   return parsedCampaigns;
+  // };
 
   useEffect(() => {
-    if (contract) getCampaigns();
+    if (contract) fetchCampaigns();
   }, [address, contract]);
 
   return (
