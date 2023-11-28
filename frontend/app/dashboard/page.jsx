@@ -72,7 +72,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (contract) fetchCampaigns();
-  }, [address, contract]);
+  }, [address]);
 
   return (
     <>

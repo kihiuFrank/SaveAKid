@@ -21,8 +21,10 @@ import {
   useAccount,
 } from "wagmi";
 import { getContract } from "@wagmi/core";
-import { utils } from "ethers";
+//import { utils } from "ethers";
 //import { ethers } from "ethers";
+
+import { formatEther, parseEther } from "viem";
 
 const StateContext = createContext();
 const saveAKidAddr = contractAddresses["11155111"][0];
@@ -118,11 +120,9 @@ export const StateContextProvider = ({ children }) => {
       owner: campaign.owner,
       title: campaign.title,
       description: campaign.description,
-      target: ethers.utils.formatEther(campaign.target.toString()),
+      target: parseEther(campaign.target.toString()),
       deadline: campaign.deadline.toNumber(),
-      amountCollected: ethers.utils.formatEther(
-        campaign.amountCollected.toString()
-      ),
+      amountCollected: parseEther(campaign.amountCollected.toString()),
       image: campaign.image,
       pId: i,
     }));
@@ -143,7 +143,7 @@ export const StateContextProvider = ({ children }) => {
   const donate = async (pId, amount) => {
     try {
       const data = await contract.call("donateToCampaign", [pId], {
-        value: ethers.utils.parseEther(amount),
+        value: parseEther(amount),
       });
       toast.success(
         "Campaign funded successfully. Thansk for your collaboration"
@@ -174,7 +174,7 @@ export const StateContextProvider = ({ children }) => {
     for (let i = 0; i < numberOfDonations; i++) {
       parsedDonations.push({
         donator: donations[0][i],
-        donation: ethers.utils.formatEther(donations[1][i].toString()),
+        donation: parseEther(donations[1][i].toString()),
       });
     }
 

@@ -1,7 +1,6 @@
 "use client";
 import PageContainer from "../../components/containers/PageContainer";
 import React, { useState } from "react";
-import { ethers } from "ethers";
 import { parseUnits } from "viem";
 import { useStateContext } from "../../context/";
 import { checkIfImage } from "../../utils";
