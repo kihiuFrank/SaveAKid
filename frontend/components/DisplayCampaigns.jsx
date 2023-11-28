@@ -5,7 +5,6 @@ import { v4 as uuidv4 } from "uuid";
 import FundCard from "./FundCard";
 import Image from "next/image";
 import Container from "./containers/Container";
-import PageContainer from "./containers/PageContainer";
 
 const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
   const router = useRouter();
@@ -17,24 +16,25 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
   };
 
   return (
-    <PageContainer className="flex flex-wrap items-center justify-between flex-col">
-      <h1 className="text-1xl font-bold leading-snug tracking-tight text-gray-800 lg:text-2xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-white">
+    <Container className="flex flex-wrap items-center justify-center flex-col mt-[5rem]">
+      <h1 className=" font-bold leading-snug tracking-tight text-gray-800 lg:text-4xl lg:leading-tight text-3xl xl:text-5xl xl:leading-tight dark:text-white">
         {title} ({campaigns.length})
       </h1>
-      <div className="flex flex-wrap mt-[20px] gap-[26px]">
+
+      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-8  gap-8">
         {isLoading && (
           <Image
             priority
             src="/loader.svg"
-            width={500}
-            height={500}
+            width={200}
+            height={200}
             alt="loader"
-            className="w-[100px] h-[100px] object-contain"
+            className="object-contain"
           />
         )}
 
         {!isLoading && campaigns.length === 0 && (
-          <p className="font-epilogue font-semibold text-[14px] leading-[30px] text-[#818183]">
+          <p className="  font-semibold text-lg leading-8 text-[#818183]">
             You have not created any campaigns yet
           </p>
         )}
@@ -49,7 +49,7 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
             />
           ))}
       </div>
-    </PageContainer>
+    </Container>
   );
 };
 

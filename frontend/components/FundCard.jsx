@@ -19,81 +19,71 @@ const FundCard = ({
   const remainingDays = daysLeft(deadline);
   return (
     <div
-      className="sm:w-[288px] w-full rounded-[15px]  bg-white border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer"
+      className=" rounded-[1rem]  bg-white border border-gray-200 shadow dark:bg-[#1c1c24] dark:border-gray-700 cursor-pointer"
       onClick={handleClick}
     >
       <img
         src={image}
-        width={200}
-        height={200}
+        width="auto"
+        height="auto"
         alt="fund"
-        className="w-full h-[158px] object-cover rounded-[15px]"
+        className="w-full h-[12rem] object-cover rounded-[1rem]"
       />
 
-      <div className="flex flex-col p-4">
-        <div className="flex flex-row items-center mb-[18px]">
-          <Image
-            priority
-            src="/type.svg"
-            width={200}
-            height={200}
-            alt="tag"
-            className="w-[17px] h-[17px] object-contain"
-          />
-          <p className="ml-[12px] mt-[2px] h-[17px] font-epilogue font-medium text-[#808191]">
-            {category}
-          </p>
-        </div>
+      <div className="flex flex-col px-2">
+        <p className="ml-2 mt-0.5 h-4   font-medium text-[#808191]">
+          {category}
+        </p>
 
         <div className="block">
-          <h3 className="font-epilogue font-semibold text-[16px] text-black dark:text-white  text-left leading-[26px] truncate">
+          <h3 className="  font-semibold text-base text-black dark:text-white  text-left leading-6 truncate">
             {title}
           </h3>
-          <p className="mt-[5px] font-epilogue font-normal  text-gray-700 dark:text-gray-400 text-left leading-[18px] truncate">
+          <p className="mt-1 font-normal  text-gray-700 dark:text-gray-400 text-left leading-6 truncate">
             {description}
           </p>
         </div>
 
-        <div className="flex justify-between flex-wrap mt-[15px] gap-2">
+        <div className="flex justify-between flex-wrap mt-4 gap-2">
           <div className="flex flex-col">
-            <h4 className="font-epilogue font-semibold text-[14px] text-gray-700 dark:text-gray-400 leading-[22px]">
+            <h4 className="  font-semibold text-base text-gray-700 dark:text-gray-400 leading-6">
               {amountCollected}
             </h4>
-            <p className="mt-[3px] font-epilogue font-normal text-[12px] leading-[18px] text-gray-700 dark:text-gray-400 sm:max-w-[120px] truncate">
-              Raised out of {target}
+            <p className="mt-px font-normal text-sm leading-8 text-gray-700 dark:text-gray-400 max-w-[9rem] truncate">
+              Raised out of <span className="truncate">{target}</span>
             </p>
           </div>
 
           <div className="flex flex-col">
-            <h4 className="font-epilogue font-semibold text-[14px] text-gray-700 dark:text-gray-400 leading-[22px]">
+            <h4 className="  font-semibold text-base text-gray-700 dark:text-gray-400 leading-6">
               {remainingDays}
             </h4>
-            <p className="mt-[3px] font-epilogue font-normal text-[12px] leading-[18px] text-gray-700 dark:text-gray-400 sm:max-w-[120px] truncate">
+            <p className="mt-px   font-normal text-sm leading-8 text-gray-700 dark:text-gray-400 sm:max-w-[120px] truncate">
               Days left
             </p>
           </div>
         </div>
 
-        <div className="flex items-center mt-[20px] gap-[12px]">
-          <div className="w-[30px] h-30px] rounded-full flex justify-center items-center bg-[#13131a]">
+        <div className="flex items-center gap-2">
+          <div className="w-[3rem] h-3rem] rounded-full flex justify-center items-center ">
             <Image
               priority
               src="/logo.png"
-              width={200}
-              height={200}
+              width={300}
+              height={300}
               alt="user"
               className="w-1/2 h-1/2 object-contain"
             />
           </div>
 
-          <div className="flex-1 font-epilogue font-normal text-[12px] text-gray-700 dark:text-gray-400 truncate">
+          <div className="flex-1   font-normal text-[12px] text-gray-700 dark:text-gray-400 p-4 truncate">
             {" "}
             by{" "}
-            <span className="font-epilogue leading-[22px] text-blue-600 hover:underline dark:text-blue-500">
+            <span className="  leading-6 text-blue-600 hover:underline dark:text-blue-500">
               {name}
             </span>
             <div className="flex flex-col">
-              <span className=" font-epilogue font-normal text-[12px] text-gray-700 dark:text-gray-400 leading-[18px] sm:max-w-[120px] truncate ">
+              <span className="   font-normal text-[12px] text-gray-700 dark:text-gray-400 leading-6 sm:max-w-[120px] truncate ">
                 {owner}
               </span>
             </div>

@@ -122,7 +122,7 @@ const Campaign = () => {
 
       <div className=" flex justify-center items-center flex-col rounded-[10px] sm:p-10 p-4 gap-10">
         <div className="flex justify-center items-center p-[16px] sm:min-w-[380px] bg-[#3a3a43] rounded-[10px]">
-          <h1 className="font-epilogue font-bold sm:text-[25px] text-[18px] leading-[38px] text-gray-800 dark:text-white">
+          <h1 className="  font-bold sm:text-[25px] text-[18px] leading-[38px] text-gray-800 dark:text-white">
             Start a Campaign
           </h1>
         </div>
@@ -172,7 +172,7 @@ const Campaign = () => {
               className="w-[40px] h-[40px] object-contain"
             />
 
-            <h4 className="font-epilogue font-bold text-[25px] text-gray-800 dark:text-white ml-[20px]">
+            <h4 className="  font-bold text-[25px] text-gray-800 dark:text-white ml-[20px]">
               You will get (100 - platformFee)% of the raised amount
             </h4>
           </div>
