@@ -18,7 +18,7 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
 
   return (
     <PageContainer className="flex flex-wrap items-center justify-between flex-col">
-      <h1 className="text-2xl font-bold leading-snug tracking-tight text-gray-800 lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-white">
+      <h1 className="text-1xl font-bold leading-snug tracking-tight text-gray-800 lg:text-2xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-white">
         {title} ({campaigns.length})
       </h1>
       <div className="flex flex-wrap mt-[20px] gap-[26px]">

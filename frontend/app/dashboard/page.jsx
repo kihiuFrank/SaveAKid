@@ -40,8 +40,21 @@ const Dashboard = () => {
       abi: contractAbi,
       functionName: "getCampaigns",
     });
+
+    const parsedCampaigns = readData.map((campaign, i) => ({
+      owner: campaign.owner,
+      name: campaign.name,
+      title: campaign.title,
+      description: campaign.description,
+      target: formatEther(campaign.target.toString()),
+      deadline: campaign.deadline,
+      amountCollected: formatEther(campaign.amountCollected.toString()),
+      image: campaign.image,
+      pId: i,
+    }));
+
     console.log(`The contract data is: ${readData}`);
-    setCampaigns(readData);
+    setCampaigns(parsedCampaigns);
     setIsLoading(false);
   };
 

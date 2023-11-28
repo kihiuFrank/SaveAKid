@@ -63,11 +63,10 @@ const Campaign = () => {
       form.title, // title
       form.category, // campaign category
       form.description, // description
-      form.target,
+      parseUnits(form.target, 18),
       new Date(form.deadline).getTime(),
       form.image,
     ],
-    target: parseUnits(form.target, 18),
   });
 
   const { data, write } = useContractWrite(config);

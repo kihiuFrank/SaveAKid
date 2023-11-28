@@ -19,7 +19,7 @@ const FundCard = ({
   const remainingDays = daysLeft(deadline);
   return (
     <div
-      className="sm:w-[288px] w-full rounded-[15px] bg-[#1c1c24] cursor-pointer"
+      className="sm:w-[288px] w-full rounded-[15px]  bg-white border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer"
       onClick={handleClick}
     >
       <img
@@ -46,29 +46,29 @@ const FundCard = ({
         </div>
 
         <div className="block">
-          <h3 className="font-epilogue font-semibold text-[16px] text-white text-left leading-[26px] truncate">
+          <h3 className="font-epilogue font-semibold text-[16px] text-black dark:text-white  text-left leading-[26px] truncate">
             {title}
           </h3>
-          <p className="mt-[5px] font-epilogue font-normal  text-[#808191] text-left leading-[18px] truncate">
+          <p className="mt-[5px] font-epilogue font-normal  text-gray-700 dark:text-gray-400 text-left leading-[18px] truncate">
             {description}
           </p>
         </div>
 
         <div className="flex justify-between flex-wrap mt-[15px] gap-2">
           <div className="flex flex-col">
-            <h4 className="font-epilogue font-semibold text-[14px] text-[#b2b3bd] leading-[22px]">
+            <h4 className="font-epilogue font-semibold text-[14px] text-gray-700 dark:text-gray-400 leading-[22px]">
               {amountCollected}
             </h4>
-            <p className="mt-[3px] font-epilogue font-normal text-[12px] leading-[18px] text-[#808191] sm:max-w-[120px] truncate">
+            <p className="mt-[3px] font-epilogue font-normal text-[12px] leading-[18px] text-gray-700 dark:text-gray-400 sm:max-w-[120px] truncate">
               Raised out of {target}
             </p>
           </div>
 
           <div className="flex flex-col">
-            <h4 className="font-epilogue font-semibold text-[14px] text-[#b2b3bd] leading-[22px]">
+            <h4 className="font-epilogue font-semibold text-[14px] text-gray-700 dark:text-gray-400 leading-[22px]">
               {remainingDays}
             </h4>
-            <p className="mt-[3px] font-epilogue font-normal text-[12px] leading-[18px] text-[#808191] sm:max-w-[120px] truncate">
+            <p className="mt-[3px] font-epilogue font-normal text-[12px] leading-[18px] text-gray-700 dark:text-gray-400 sm:max-w-[120px] truncate">
               Days left
             </p>
           </div>
@@ -78,7 +78,7 @@ const FundCard = ({
           <div className="w-[30px] h-30px] rounded-full flex justify-center items-center bg-[#13131a]">
             <Image
               priority
-              src="/thirdweb.png"
+              src="/logo.png"
               width={200}
               height={200}
               alt="user"
@@ -86,15 +86,14 @@ const FundCard = ({
             />
           </div>
 
-          <div className="flex-1 font-epilogue font-normal text-[12px] text-[#808191] truncate">
+          <div className="flex-1 font-epilogue font-normal text-[12px] text-gray-700 dark:text-gray-400 truncate">
             {" "}
             by{" "}
-            <span className="font-epilogue leading-[22px] text-[#b2b3bd]">
+            <span className="font-epilogue leading-[22px] text-blue-600 hover:underline dark:text-blue-500">
               {name}
             </span>
-            s
             <div className="flex flex-col">
-              <span className=" font-epilogue font-normal text-[12px] text-[#b2b3bd] leading-[18px] sm:max-w-[120px] truncate ">
+              <span className=" font-epilogue font-normal text-[12px] text-gray-700 dark:text-gray-400 leading-[18px] sm:max-w-[120px] truncate ">
                 {owner}
               </span>
             </div>
