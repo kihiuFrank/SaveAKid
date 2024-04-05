@@ -28,6 +28,7 @@
     "@heroicons/react": "^2.0.17",
     "@rainbow-me/rainbowkit": "^1.1.2",
     "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@web3modal/wagmi": "^3.4.0",
     "connectkit": "^1.4.0",
     "cors": "^2.8.5",
     "encoding": "^0.1.13",
@@ -50,7 +51,7 @@
     "sass": "^1.69.5",
     "tls": "^0.0.1",
     "typescript": "^5.3.2",
-    "viem": "^1.17.2",
+    "viem": "^1.19.11",
     "wagmi": "^1.4.7"
   },
   "devDependencies": {

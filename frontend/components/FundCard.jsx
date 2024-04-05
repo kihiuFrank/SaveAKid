@@ -19,7 +19,7 @@ const FundCard = ({
   const remainingDays = daysLeft(deadline);
   return (
     <div
-      className=" rounded-[1rem]  bg-white border border-gray-200 shadow dark:bg-[#1c1c24] dark:border-gray-700 cursor-pointer"
+      className=" rounded-[1rem]  bg-gray-50 border border-gray-200 shadow dark:bg-[#1c1c24] dark:border-gray-700 cursor-pointer"
       onClick={handleClick}
     >
       <img

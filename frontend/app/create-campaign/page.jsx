@@ -21,6 +21,7 @@ import contractAddresses from "../../constants/contractAddresses.json";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loader from "../../components/Loader";
+import Container from "../../components/containers/Container";
 
 const Campaign = () => {
   const router = useRouter();
@@ -110,7 +111,7 @@ const Campaign = () => {
   };
 
   return (
-    <PageContainer>
+    <Container>
       {isLoading && <Loader />}
 
       {isSuccess &&
@@ -120,7 +121,7 @@ const Campaign = () => {
       {isError &&
         toast.error("Error while creating Campaign, please try again")}
 
-      <div className=" flex justify-center items-center flex-col rounded-[10px] sm:p-10 p-4 gap-10">
+      <div className=" flex justify-center items-center flex-col rounded-[10px] sm:p-10 p-4 gap-10 mt-[5rem]">
         <div className="flex justify-center items-center p-[16px] sm:min-w-[380px] bg-[#3a3a43] rounded-[10px]">
           <h1 className="  font-bold sm:text-[25px] text-[18px] leading-[38px] text-gray-800 dark:text-white">
             Start a Campaign
@@ -211,7 +212,7 @@ const Campaign = () => {
         </form>
       </div>
       <ToastContainer />
-    </PageContainer>
+    </Container>
   );
 };
 

@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import FundCard from "./FundCard";
 import Image from "next/image";
 import Container from "./containers/Container";
+import { formatEther } from "viem";
 
 const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
   const router = useRouter();
@@ -12,7 +13,23 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
   console.log(`These are the campaigns: ${campaigns}`);
 
   const handleNavigate = (campaign) => {
-    router.push(`/campaign-details/${campaign.title}`, { state: campaign });
+    //router.push(`/campaign-details/${campaign.pId}`, { state: campaign });
+    router.push({
+      pathname: `/campaign-details/${campaign.pId}`,
+      query: {
+        owner: campaign.owner,
+        name: campaign.name,
+        title: campaign.title,
+        description: campaign.description,
+        target: campaign.target,
+        deadline: campaign.deadline,
+        amountCollected: campaign.amountCollected,
+        image: campaign.image,
+        pId: campaign.pId,
+      },
+    });
+
+    // router.push("/campaign-details");
   };
 
   return (
@@ -21,24 +38,24 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
         {title} ({campaigns.length})
       </h1>
 
+      {isLoading && (
+        <Image
+          priority
+          src="/loader.svg"
+          width={200}
+          height={200}
+          alt="loader"
+          className="object-contain"
+        />
+      )}
+
+      {!isLoading && campaigns.length === 0 && (
+        <p className="  font-semibold text-lg leading-8 text-[#818183]">
+          You have not created any campaigns yet
+        </p>
+      )}
+
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-8  gap-8">
-        {isLoading && (
-          <Image
-            priority
-            src="/loader.svg"
-            width={200}
-            height={200}
-            alt="loader"
-            className="object-contain"
-          />
-        )}
-
-        {!isLoading && campaigns.length === 0 && (
-          <p className="  font-semibold text-lg leading-8 text-[#818183]">
-            You have not created any campaigns yet
-          </p>
-        )}
-
         {!isLoading &&
           campaigns.length > 0 &&
           campaigns.map((campaign) => (

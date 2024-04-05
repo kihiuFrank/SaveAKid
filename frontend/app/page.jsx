@@ -1,6 +1,5 @@
 "use client";
 
-import Head from "next/head";
 import Hero from "../components/hero";
 import Navbar from "../components/navbar";
 import SectionTitle from "../components/sectionTitle";
@@ -18,19 +17,6 @@ import PageContainer from "../components/containers/PageContainer";
 const Home = () => {
   return (
     <>
-      <Head>
-        <title>
-          SaveAKid - The ultimate donations platform for supporting children in
-          Africa.
-        </title>
-        <meta
-          name="SaveAKid"
-          content=" SaveAKid is a donations platform aiming to provide support for
-          children."
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <Hero />
       <SectionTitle
         pretitle="SaveAKid Benefits"
