@@ -1,7 +1,7 @@
 {
-  "name": "nextly-template",
+  "name": "saveakid",
   "version": "0.1.0",
-  "description": "Nextly Landing Page Template",
+  "description": "",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -17,7 +17,7 @@
     "tailwindcss",
     "free"
   ],
-  "author": "Surjith S M",
+  "author": "kihiu",
   "license": "ISC",
   "dependencies": {
     "@emotion/css": "^11.10.6",
